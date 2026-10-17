@@ -126,7 +126,13 @@ const App = () => {
   // this handle mouse moving event
 
   const handleMouseMove = (e) => {
+
     const { clientX, clientY } = e;
+
+    if(tool === 'selection'){
+      e.target.style.cursor = selectElementAtPosition(clientX, clientY, elements) ? 'move' : 'default'
+    }
+
     if (action === "drawing") {
       const index = elements.length - 1;
       const { x1, y1 } = elements[index];
